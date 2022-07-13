@@ -15,6 +15,9 @@ class StaticPagesURLTests(TestCase):
         response = self.guest_client.get('/second_page/')
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
+        response = self.guest_client.get('/third_page/')
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+
     def test_page_shows_correct_content(self):
         """Проверка контента страниц."""
         response = self.guest_client.get('/')
@@ -22,3 +25,6 @@ class StaticPagesURLTests(TestCase):
 
         response = self.guest_client.get('/second_page/')
         self.assertContains(response, 'А это вторая страница!')
+
+        response = self.guest_client.get('/third_page/')
+        self.assertContains(response, 'А это третья страница!')
